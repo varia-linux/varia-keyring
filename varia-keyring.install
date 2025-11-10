@@ -4,11 +4,11 @@ post_install() {
   KEY_FILE="${KEYRING_PATH}/myrepo.gpg"
   FINGERPRINTS_FILE="${KEYRING_PATH}/public_key_fingerprints"
 
-  pacman-key --quiet --add "${KEY_FILE}"
+  pacman-key --add "${KEY_FILE}"
 
   while read -r FINGERPRINT; do
     echo ">>> Signing key with fingerprint: ${FINGERPRINT}"
-    pacman-key --quiet --lsign-key "${FINGERPRINT}"
+    pacman-key --lsign-key "${FINGERPRINT}"
   done < "${FINGERPRINTS_FILE}"
   
   pacman-key --refresh-keys
@@ -25,7 +25,7 @@ pre_remove() {
   
   while read -r FINGERPRINT; do
     echo ">>> Removing key with fingerprint: ${FINGERPRINT}"
-    pacman-key --quiet --delete "${FINGERPRINT}"
+    pacman-key --delete "${FINGERPRINT}"
   done < "${FINGERPRINTS_FILE}"
   pacman-key --refresh-keys
 }

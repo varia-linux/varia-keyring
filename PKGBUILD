@@ -1,6 +1,6 @@
 pkgname=varia-keyring
 pkgver=20251110
-pkgrel=1
+pkgrel=2
 pkgdesc="Pacman keyring for Varia Linux"
 arch=('any')
 url="https://varia-linux.github.io/repo"

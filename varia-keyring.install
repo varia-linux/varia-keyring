@@ -1,7 +1,9 @@
+pkgname=varia-keyring
+
 post_install() {
-  echo ">>> Importing the MyRepo signing key..."
+  echo ">>> Importing the Varia Linux signing key..."
   KEYRING_PATH="/usr/share/keyrings/${pkgname}"
-  KEY_FILE="${KEYRING_PATH}/myrepo.gpg"
+  KEY_FILE="${KEYRING_PATH}/varia-repo.gpg"
   FINGERPRINTS_FILE="${KEYRING_PATH}/public_key_fingerprints"
 
   pacman-key --add "${KEY_FILE}"

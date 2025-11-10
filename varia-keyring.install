@@ -10,8 +10,6 @@ post_install() {
     echo ">>> Signing key with fingerprint: ${FINGERPRINT}"
     pacman-key --lsign-key "${FINGERPRINT}"
   done < "${FINGERPRINTS_FILE}"
-  
-  pacman-key --refresh-keys
 }
 
 post_upgrade() {
@@ -19,7 +17,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-  echo ">>> Removing the MyRepo signing key..."
+  echo ">>> Removing the Varia Linux signing key..."
   KEYRING_PATH="/usr/share/keyrings/${pkgname}"
   FINGERPRINTS_FILE="${KEYRING_PATH}/public_key_fingerprints"
   
@@ -27,5 +25,4 @@ pre_remove() {
     echo ">>> Removing key with fingerprint: ${FINGERPRINT}"
     pacman-key --delete "${FINGERPRINT}"
   done < "${FINGERPRINTS_FILE}"
-  pacman-key --refresh-keys
 }
